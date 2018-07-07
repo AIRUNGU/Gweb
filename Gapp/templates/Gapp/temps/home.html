@@ -1,0 +1,14 @@
+{% extends 'Gapp/base.html' %}
+{% block content %}
+
+<h1>This is HomePage</h1>
+
+<div id="rpa">
+	<ul id="test">
+		{% for a in news %}
+			<li>{{a.description}}</li>
+		{% endfor %}
+	</ul>
+</div>
+
+{% endblock %}

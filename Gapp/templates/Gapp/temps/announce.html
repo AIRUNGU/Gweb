@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="{%static 'css/bootstrap.css' %}">
+</head>
+<body>
+	<div id="msglist">
+		<ul id="talk">
+		<ul id="#test">
+			{% for u in news %}
+			<li>{{u.description}}</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<form action="/create_post/" method="POST" id="post-form">
+		{% csrf_token %}
+		<div class="fieldWrapper" id="the_post">
+        	{{ form.text }}
+    	</div>
+    	<div id="results"></div> <!-- errors go here -->
+		<input type="text" id="post-text" name="">
+		<input type="submit" name="" value="Send">
+	</form>
+<script type="text/javascript" src="{%static 'js/jquery-3.2.1.min.js' %}"></script>
+<script type="text/javascript" src="{%static 'js/main.js' %}"></script>
+<script type="text/javascript">
+	// Submit post on submit
+$('#post-form').on('submit', function(event){
+    event.preventDefault();
+    console.log("form submitted!")  // sanity check
+    create_post();
+    getMessages()
+    
+ //    $(function(){
+ // 		refreshTimer = setInterval(getMessages,10);
+	// });
+
+});
+</script>
+</body>
+</html>
